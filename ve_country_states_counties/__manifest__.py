@@ -20,6 +20,7 @@ Permite seleccionar estado, municipio y parroquia en contactos y direcciones, me
 
     # any module necessary for this one to work correctly
     'depends': ['base','contacts'],
+    'images':['static/description/images/cover.png'],
 
     # always loaded
     'data': [
