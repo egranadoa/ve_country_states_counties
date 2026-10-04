@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_res_municipality_user,res.country.state.municipality.user,res.country.state.municipality,base.group_user,r,
+access_res_municipality_system,res.country.state.municipality.system,res.country.state.municipality,base.group_system,crud,
+access_res_parish_user,res.country.state.municipality.parish.user,res.country.state.municipality.parish,base.group_user,r,
+access_res_parish_system,res.country.state.municipality.parish.system,res.country.state.municipality.parish,base.group_system,crud,
