@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="ve_country_states_counties.list">
+      <field name="name">ve_country_states_counties list</field>
+      <field name="model">ve_country_states_counties.ve_country_states_counties</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </list>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="ve_country_states_counties.action_window">
+      <field name="name">ve_country_states_counties window</field>
+      <field name="res_model">ve_country_states_counties.ve_country_states_counties</field>
+      <field name="view_mode">list,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="ve_country_states_counties.action_server">
+      <field name="name">ve_country_states_counties server</field>
+      <field name="model_id" ref="model_ve_country_states_counties_ve_country_states_counties"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="ve_country_states_counties" id="ve_country_states_counties.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="ve_country_states_counties.menu_1" parent="ve_country_states_counties.menu_root"/>
+    <menuitem name="Menu 2" id="ve_country_states_counties.menu_2" parent="ve_country_states_counties.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="ve_country_states_counties.menu_1_list" parent="ve_country_states_counties.menu_1"
+              action="ve_country_states_counties.action_window"/>
+    <menuitem name="Server to list" id="ve_country_states_counties" parent="ve_country_states_counties.menu_2"
+              action="ve_country_states_counties.action_server"/>
+-->
+  </data>
+</odoo>

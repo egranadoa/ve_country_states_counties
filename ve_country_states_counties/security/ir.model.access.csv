@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_municipality_user,res.country.state.municipality.user,model_res_country_state_municipality,base.group_user,1,0,0,0
+access_res_municipality_system,res.country.state.municipality.system,model_res_country_state_municipality,base.group_system,1,1,1,1
+access_res_parish_user,res.country.state.municipality.parish.user,model_res_country_state_municipality_parish,base.group_user,1,0,0,0
+access_res_parish_system,res.country.state.municipality.parish.system,model_res_country_state_municipality_parish,base.group_system,1,1,1,1

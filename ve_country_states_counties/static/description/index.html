@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localización Venezuela - Estados, Municipios y Parroquias para Odoo</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --odoo-primary: #714B67;
+            --odoo-primary-dark: #583951;
+            --odoo-secondary: #00A09D;
+            --odoo-accent: #875A7B;
+            --ve-yellow: #FFCC00;
+            --ve-blue: #00247D;
+            --ve-red: #CF142B;
+            --dark-surface: #1E293B;
+            --light-bg: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #334155;
+            background-color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        .odoo-header {
+            background: linear-gradient(135deg, var(--odoo-primary) 0%, #4A2E44 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(113, 75, 103, 0.25);
+        }
+
+        .odoo-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 160, 157, 0.15);
+            border-radius: 50%;
+            blur: 40px;
+        }
+
+        .badge-version {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            color: #FFFFFF;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 50rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .flag-accent {
+            display: inline-flex;
+            height: 6px;
+            width: 60px;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        .flag-yellow { background-color: var(--ve-yellow); width: 33.33%; height: 100%; }
+        .flag-blue { background-color: var(--ve-blue); width: 33.33%; height: 100%; }
+        .flag-red { background-color: var(--ve-red); width: 33.33%; height: 100%; }
+
+        .feature-card {
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            background: #FFFFFF;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+            border-color: var(--odoo-secondary);
+        }
+
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .icon-purple {
+            background-color: rgba(113, 75, 103, 0.1);
+            color: var(--odoo-primary);
+        }
+
+        .icon-teal {
+            background-color: rgba(0, 160, 157, 0.1);
+            color: var(--odoo-secondary);
+        }
+
+        .icon-amber {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #D97706;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--odoo-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            border-left: 4px solid var(--odoo-secondary);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem;
+        }
+
+        .table-custom {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+        }
+
+        .table-custom th {
+            background-color: #F8FAFC;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .screen-mockup {
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #CBD5E1;
+            overflow: hidden;
+            background: #FFFFFF;
+        }
+
+        .mockup-header {
+            background: #E2E8F0;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #FF5F56; }
+        .dot-yellow { background: #FFBD2E; }
+        .dot-green { background: #27C93F; }
+
+        .cascade-demo {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .select-preview {
+            background: #FFFFFF;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            color: #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tech-pill {
+            background-color: #F1F5F9;
+            color: #475569;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+
+    <!-- HERO HEADER SECTION -->
+    <div class="odoo-header mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="flag-accent">
+                    <div class="flag-yellow"></div>
+                    <div class="flag-blue"></div>
+                    <div class="flag-red"></div>
+                </div>
+                <span class="badge badge-version mb-3">
+                    <i class="fa-solid fa-code-branch me-1"></i> Odoo 17.0 - 19.0+ Ready
+                </span>
+                <h1 class="display-5 fw-bold mb-3">Venezuela - Estados, Municipios y Parroquias</h1>
+                <p class="lead mb-4">
+                    Estructura territorial completa y precargada de la República Bolivariana de Venezuela para la ficha de Contactos (Personas y Empresas) en Odoo.
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge bg-success bg-opacity-25 border border-success border-opacity-50 px-3 py-2 rounded-pill">
+                        <i class="fa-solid fa-circle-check me-1"></i> +335 Municipios Precargados
+                    </span>
+                    <span class="badge bg-info bg-opacity-25 border border-info border-opacity-50 px-3 py-2 rounded-pill">
+                        <i class="fa-solid fa-circle-check me-1"></i> +1,100 Parroquias Precargadas
+                    </span>
+                    <span class="badge bg-warning bg-opacity-25 border border-warning border-opacity-50 px-3 py-2 rounded-pill">
+                        <i class="fa-solid fa-layer-group me-1"></i> Campos Dependientes (Filtro en Cascada)
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center d-none d-lg-block">
+                <div class="p-3 bg-white bg-opacity-10 rounded-4 border border-white border-opacity-20 backdrop-blur">
+                    <i class="fa-solid fa-map-location-dot display-1 text-warning"></i>
+                    <h5 class="mt-3 text-white fw-bold">División Político-Territorial</h5>
+                    <p class="small text-white-50 mb-0">Listas oficiales estandarizadas según el INE y Leyes Orgánicas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN VALUE PROPOSITION / HIGHLIGHT -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="highlight-box">
+                <div class="d-flex align-items-center mb-2">
+                    <i class="fa-solid fa-circle-info text-teal me-2 fs-4"></i>
+                    <h4 class="fw-bold mb-0 text-dark">Especialmente Diseñado para la Operatividad Legal y Logística en Venezuela</h4>
+                </div>
+                <p class="mb-0">
+                    Olvídese de los errores tipográficos y direcciones incompletas. Con este módulo, al seleccionar <strong>Venezuela</strong> como país en la ficha de cualquier cliente, proveedor, persona o empresa, el sistema habilita automáticamente la selección jerárquica de <strong>Estado &rarr; Municipio &rarr; Parroquia</strong> con todos los datos oficiales previamente cargados en la base de datos.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- KEY FEATURES GRID -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h5 class="fw-bold mb-3">100% Datos Precargados</h5>
+                <p class="text-muted small">
+                    Incluye los 23 Estados, el Distrito Capital, las Dependencias Federales, todos los Municipios y sus respectivas Parroquias urbanas y rurales. ¡Sin necesidad de carga manual!
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h5 class="fw-bold mb-3">Selección Dinámica en Cascada</h5>
+                <p class="text-muted small">
+                    Filtro intencional e inteligente: Al elegir un Estado, la lista de Municipios se limita únicamente a los pertenecientes a dicho Estado; al escoger el Municipio, solo se muestran sus Parroquias asociadas.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h5 class="fw-bold mb-3">Soporte Personas y Empresas</h5>
+                <p class="text-muted small">
+                    Totalmente integrado en la estructura nativa de contactos de Odoo (<code>res.partner</code>). Funciona perfectamente para fichas individuales, compañías, direcciones de entrega y de facturación.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEMO DE SELECCIÓN DE CAMPOS (MOCKUP INTERACTIVO VISUAL) -->
+    <div class="row align-items-center my-5 py-4 bg-light rounded-4 px-3 px-md-5 border">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+            <span class="text-uppercase fw-bold text-primary small tracking-wider">Flujo de Trabajo Simplificado</span>
+            <h2 class="fw-bold my-2">¿Cómo funciona la selección territorial en Odoo?</h2>
+            <p class="text-muted">
+                El módulo extiende el formulario de contacto estándar incorporando campos relacionales (<code>Many2one</code>) enlazados a la tabla de direcciones de Venezuela.
+            </p>
+            <ul class="list-unstyled">
+                <li class="mb-3 d-flex align-items-start">
+                    <i class="fa-solid fa-square-check text-success me-2 mt-1"></i>
+                    <span><strong>Formateo Automático de Dirección:</strong> Muestra la Parroquia, Municipio y Estado en los reportes impresos y facturas electrónicas/SENIAT.</span>
+                </li>
+                <li class="mb-3 d-flex align-items-start">
+                    <i class="fa-solid fa-square-check text-success me-2 mt-1"></i>
+                    <span><strong>Compatibilidad con Ventas y Facturación:</strong> Facilita el cálculo de tarifas de envío por municipios o parroquias en la logística de entrega.</span>
+                </li>
+                <li class="d-flex align-items-start">
+                    <i class="fa-solid fa-square-check text-success me-2 mt-1"></i>
+                    <span><strong>Búsqueda Rápida (Autocomplete):</strong> Los usuarios pueden escribir parte del nombre de la parroquia o municipio para encontrarlo de inmediato.</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="screen-mockup">
+                <div class="mockup-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span class="ms-2 small text-muted font-monospace">Contactos / Formulario de Compañía o Persona</span>
+                </div>
+                <div class="p-4">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label fw-bold small text-secondary">País</label>
+                            <div class="select-preview fw-semibold bg-light">
+                                <span>Venezuela</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-secondary">Estado</label>
+                            <div class="select-preview">
+                                <span>Miranda</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-secondary">Municipio</label>
+                            <div class="select-preview border-primary">
+                                <span class="fw-bold text-dark">Chacao</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold small text-secondary">Parroquia</label>
+                            <div class="select-preview border-primary">
+                                <span class="fw-bold text-dark">Chacao</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold small text-secondary">Calle / Av. / Edificio / Casa</label>
+                            <div class="select-preview text-muted">
+                                <span>Av. Francisco de Miranda, Torre Odoo, Piso 5, Oficina 5-B</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETALLE DE DATOS PRECARGADOS POR ESTADO (RESUMEN) -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="fw-bold mb-4 text-center">Cobertura Completa del Territorio Nacional</h3>
+            <div class="table-responsive table-custom shadow-sm">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Entidad Federal (Estado)</th>
+                            <th>Ejemplo de Municipios Incluidos</th>
+                            <th>Ejemplo de Parroquias Precargadas</th>
+                            <th class="text-center">Estado de Carga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold"><i class="fa-solid fa-location-dot text-danger me-2"></i>Distrito Capital</td>
+                            <td>Municipio Libertador</td>
+                            <td>Altagracia, Candelaria, Catedral, La Pastora, San Bernardino, El Recreo, Sucre (Catia)...</td>
+                            <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">100% Precargado</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold"><i class="fa-solid fa-location-dot text-danger me-2"></i>Miranda</td>
+                            <td>Chacao, Baruta, Sucre, El Hatillo, Los Salias, Carrizal, Plaza, Zamora...</td>
+                            <td>Chacao, Las Minas de Baruta, Petare, Leoncio Martínez, Filas de Mariche, Guatire...</td>
+                            <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">100% Precargado</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold"><i class="fa-solid fa-location-dot text-danger me-2"></i>Zulia</td>
+                            <td>Maracaibo, San Francisco, Cabimas, Lagunillas, Baralt, Colón...</td>
+                            <td>Chiquinquirá, Cacique Mara, Olegario Villalobos, San Francisco, Alonso de Ojeda...</td>
+                            <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">100% Precargado</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold"><i class="fa-solid fa-location-dot text-danger me-2"></i>Carabobo</td>
+                            <td>Valencia, Naguanagua, San Diego, Puerto Cabello, Guacara...</td>
+                            <td>El Socorro, San José, Urbana Naguanagua, Urbana San Diego, Bartolomé Salom...</td>
+                            <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">100% Precargado</span></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold"><i class="fa-solid fa-location-dot text-danger me-2"></i>Lara</td>
+                            <td>Iribarren, Palavecino, Torres, Jiménez, Morán...</td>
+                            <td>Catedral, Concepción, Santa Rosa, Tamaca, Cabudare, José Gregorio Bastidas...</td>
+                            <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">100% Precargado</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-center bg-light text-muted small py-3">
+                                <em>... Y así sucesivamente para los 24 estados de Venezuela (Amazonas, Anzoátegui, Apure, Aragua, Barinas, Bolívar, Cojedes, Delta Amacuro, Falcón, Guárico, La Guaira, Mérida, Monagas, Nueva Esparta, Portuguesa, Sucre, Táchira, Trujillo, Yaracuy, Zulia y Dependencias Federales).</em>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASOS DE INSTALACIÓN -->
+    <div class="row my-5">
+        <div class="col-12">
+            <h3 class="fw-bold mb-4">Instalación y Puesta en Marcha en 3 Pasos</h3>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 rounded-4 bg-light border h-100">
+                <div class="step-number">1</div>
+                <h5 class="fw-bold">Descarga e Inclusión</h5>
+                <p class="text-muted small mb-0">
+                    Coloque la carpeta del módulo (<code>l10n_ve_toponymy</code>) dentro del directorio de <code>custom_addons</code> de su instancia de Odoo.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 rounded-4 bg-light border h-100">
+                <div class="step-number">2</div>
+                <h5 class="fw-bold">Actualizar Lista de Apps</h5>
+                <p class="text-muted small mb-0">
+                    Active el Modo Desarrollador en Odoo, diríjase al menú <strong>Aplicaciones</strong> y presione <em>"Actualizar lista de aplicaciones"</em>.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 rounded-4 bg-light border h-100">
+                <div class="step-number">3</div>
+                <h5 class="fw-bold">Instalar y Disfrutar</h5>
+                <p class="text-muted small mb-0">
+                    Busque <strong>"Venezuela - Estados, Municipios y Parroquias"</strong> y haga clic en <strong>Instalar</strong>. ¡Los datos maestro se cargarán automáticamente!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ESPECIFICACIONES TÉCNICAS -->
+    <div class="row my-5">
+        <div class="col-12">
+            <div class="p-4 rounded-4 border bg-white">
+                <h4 class="fw-bold mb-3">Especificaciones Técnicas</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <span class="d-block text-muted small fw-bold text-uppercase">Módulos Dependientes</span>
+                        <div class="mt-1">
+                            <span class="tech-pill">base</span> / 
+                            <span class="tech-pill">contacts</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <span class="d-block text-muted small fw-bold text-uppercase">Modelos Extendidos / Creados</span>
+                        <div class="mt-1">
+                            <span class="tech-pill"><code>res.country.state</code></span> / 
+                            <span class="tech-pill"><code>res.country.state.municipality</code></span> / 
+                            <span class="tech-pill"><code>res.country.state.parish</code></span> / 
+                            <span class="tech-pill"><code>res.partner</code></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <span class="d-block text-muted small fw-bold text-uppercase">Compatibilidad Odoo</span>
+                        <div class="mt-1">
+                            <span class="tech-pill">Community Edition</span>
+                            <span class="tech-pill">Enterprise Edition</span>
+                            <span class="tech-pill">Odoo.sh / On-Premise / Docker</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="d-block text-muted small fw-bold text-uppercase">Idioma y Carga</span>
+                        <div class="mt-1">
+                            <span class="tech-pill">Español (VE)</span> / 
+                            <span class="tech-pill">Carga XML auto-exec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER / SUPPORT -->
+    <div class="row text-center mt-5 pt-4 border-top">
+        <div class="col-12">
+            <p class="text-muted mb-2">
+                Módulo de Localización Venezolana para la comunidad Odoo.
+            </p>
+            <p class="small text-muted">
+                ¿Soporte, personalizaciones o integración con Facturación Electrónica SENIAT? Contáctenos a través de Odoo Apps Store.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
+</body>
+</html>
