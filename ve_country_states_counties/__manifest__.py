@@ -11,6 +11,7 @@ Permite seleccionar estado, municipio y parroquia en contactos y direcciones, me
 
     'author': "Efrain Granado Alfaro",
     'website': "https://egranadoa.github.io/",
+    'support': 'efraingranadoalfaro@gmail.com',
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
